@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+:root {
+  --background: #09090b;
+  --foreground: #f4f4f5;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* === Motion — subtiele beweging, geen speelgoed-animaties ================================= */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(24px, -18px);
+  }
+}
+
+@keyframes shine-sweep {
+  from {
+    transform: translateX(-120%) skewX(-15deg);
+  }
+  to {
+    transform: translateX(220%) skewX(-15deg);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.glow-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  animation: glow-pulse 9s ease-in-out infinite, drift 16s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.bg-grid {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.09) 1px, transparent 0);
+  background-size: 28px 28px;
+  -webkit-mask-image: radial-gradient(ellipse 65% 55% at 50% 0%, black 35%, transparent 100%);
+  mask-image: radial-gradient(ellipse 65% 55% at 50% 0%, black 35%, transparent 100%);
+}
+
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn-shine::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  /* Donkere tint — deze knoppen zijn licht (bg-zinc-100), een witte shine zou onzichtbaar zijn. */
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(0, 0, 0, 0.16),
+    transparent
+  );
+  transform: translateX(-120%) skewX(-15deg);
+  transition: none;
+}
+
+.btn-shine:hover::before {
+  animation: shine-sweep 1.1s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up,
+  .glow-orb,
+  .btn-shine::before {
+    animation: none !important;
+  }
+}
