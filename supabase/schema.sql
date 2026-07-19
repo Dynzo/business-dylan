@@ -50,6 +50,7 @@ create table if not exists leads (
   message text not null,
   source text not null default 'contact-form',
   status text not null default 'new' check (status in ('new', 'researching', 'qualified', 'contacted', 'archived')),
+  ip_address text not null default '',
   created_at timestamptz not null default now()
 );
 
@@ -57,6 +58,7 @@ alter table leads enable row level security;
 
 create index if not exists leads_created_at_idx on leads(created_at desc);
 create index if not exists leads_status_idx on leads(status);
+create index if not exists leads_ip_address_idx on leads(ip_address);
 
 create table if not exists companies (
   id uuid primary key default gen_random_uuid(),

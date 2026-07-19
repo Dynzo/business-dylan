@@ -1,24 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { sendLeadReply, updateLeadStatus } from "@/app/admin/actions";
+import { archiveLead, sendLeadReply } from "@/app/admin/actions";
 import { BriefingView } from "@/components/BriefingView";
 import { PrintButton } from "@/components/PrintButton";
 import { supabaseAdmin } from "@/lib/supabase-admin";
-import type { Briefing, Company, Lead, LeadStatus } from "@/lib/types";
+import type { Briefing, Company, Lead } from "@/lib/types";
 
 export const metadata: Metadata = {
   title: "Lead",
   robots: { index: false, follow: false },
-};
-
-const STATUS_OPTIONS: LeadStatus[] = ["new", "researching", "qualified", "contacted", "archived"];
-const STATUS_LABELS: Record<LeadStatus, string> = {
-  new: "Nieuw",
-  researching: "Onderzoek loopt",
-  qualified: "Briefing klaar",
-  contacted: "Benaderd",
-  archived: "Gearchiveerd",
 };
 
 export default async function AdminLeadDetailPage({
@@ -60,31 +51,21 @@ export default async function AdminLeadDetailPage({
           {typedLead.company && <p className="text-zinc-400 print:text-zinc-700">{typedLead.company}</p>}
         </div>
         <div className="print:hidden flex items-center gap-3">
-          <form
-            action={async (formData) => {
-              "use server";
-              await updateLeadStatus(id, formData.get("status") as LeadStatus);
-            }}
-            className="flex items-center gap-2"
-          >
-            <select
-              name="status"
-              defaultValue={typedLead.status}
-              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-100 focus:border-zinc-500 focus:outline-none"
+          {typedLead.status !== "archived" && (
+            <form
+              action={async () => {
+                "use server";
+                await archiveLead(id);
+              }}
             >
-              {STATUS_OPTIONS.map((status) => (
-                <option key={status} value={status}>
-                  {STATUS_LABELS[status]}
-                </option>
-              ))}
-            </select>
-            <button
-              type="submit"
-              className="rounded-lg border border-zinc-700 px-3 py-2 text-sm font-medium text-zinc-200 transition-colors hover:bg-zinc-800"
-            >
-              Bijwerken
-            </button>
-          </form>
+              <button
+                type="submit"
+                className="rounded-lg border border-zinc-700 px-3 py-2 text-sm font-medium text-zinc-200 transition-colors hover:bg-zinc-800"
+              >
+                Archiveren
+              </button>
+            </form>
+          )}
           {typedBriefing && <PrintButton />}
         </div>
       </div>

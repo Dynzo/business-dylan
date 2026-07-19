@@ -5,7 +5,6 @@ import { redirect } from "next/navigation";
 import { sendEmail } from "@/lib/email";
 import { supabaseAdmin } from "@/lib/supabase-admin";
 import { createClient } from "@/lib/supabase-server";
-import type { LeadStatus } from "@/lib/types";
 
 // Gooit als er geen ingelogde beheerder is; anders niets (supabaseAdmin is dan altijd beschikbaar
 // zodra dit process draait, want zonder secret key kan de admin-omgeving niet functioneren).
@@ -50,11 +49,14 @@ function revalidateLeadPaths(id: string) {
   revalidatePath(`/admin/leads/${id}`);
 }
 
-export async function updateLeadStatus(id: string, status: LeadStatus) {
+// Enige handmatige status-actie: de rest (new/researching/qualified/contacted) wordt door de
+// agents/reply-flow gezet. Archiveren is voor leads die niet doorgaan, of die je buiten de mail
+// om (bv. telefonisch) al hebt afgehandeld.
+export async function archiveLead(id: string) {
   await requireAdmin();
 
-  const { error } = await supabaseAdmin!.from("leads").update({ status }).eq("id", id);
-  if (error) throw new Error("Kon de status niet bijwerken.");
+  const { error } = await supabaseAdmin!.from("leads").update({ status: "archived" }).eq("id", id);
+  if (error) throw new Error("Kon de lead niet archiveren.");
 
   revalidateLeadPaths(id);
 }

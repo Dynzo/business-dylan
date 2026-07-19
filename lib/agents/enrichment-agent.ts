@@ -45,11 +45,12 @@ export type EnrichmentLead = {
   company: string;
 };
 
-// Hard backstop tegen kostenmisbruik: /api/leads is een publiek, ongeauthenticeerd endpoint. Deze
-// cap begrenst de schade als iemand het formulier spamt, los van de rate-limit op /api/leads zelf.
-// TODO(later): enrichment loskoppelen van het publieke request-pad (bv. Vercel Cron met eigen
-// batch-cap, of alleen handmatig via /admin) i.p.v. deze twee guardrails.
-const ENRICHMENT_DAILY_CAP = Number(process.env.ENRICHMENT_DAILY_CAP ?? 25);
+// Hard backstop tegen kostenmisbruik: /api/leads is een publiek, ongeauthenticeerd endpoint.
+// Turnstile (CAPTCHA) + de IP/e-mail rate-limits in app/api/leads/route.ts zijn de eerste
+// verdedigingslinie; deze cap is de laatste — begrenst de schade als er toch iets doorheen komt.
+// Nog niet structureel losgekoppeld van het request-pad (bv. via Vercel Cron); dat kan later als
+// dat nodig blijkt, maar vereist minimaal dagelijkse batches op het gratis Vercel-plan.
+const ENRICHMENT_DAILY_CAP = Number(process.env.ENRICHMENT_DAILY_CAP ?? 10);
 
 async function dailyEnrichmentCapReached(): Promise<boolean> {
   if (!supabaseAdmin) return true;

@@ -37,6 +37,7 @@ export type Lead = {
   message: string;
   source: string;
   status: LeadStatus;
+  ip_address: string;
   created_at: string;
 };
 
@@ -45,6 +46,7 @@ export type LeadInput = {
   email: string;
   company: string;
   message: string;
+  turnstileToken: string;
 };
 
 // Structured research output — gevalideerd via het Zod-schema in lib/agents/schema.ts.

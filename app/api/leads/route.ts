@@ -4,11 +4,18 @@ import { adminNewLeadEmail, leadConfirmationEmail } from "@/lib/email-templates"
 import { getAdminEmail, sendEmail } from "@/lib/email";
 import { getSiteContent } from "@/lib/site-content";
 import { supabaseAdmin } from "@/lib/supabase-admin";
+import { verifyTurnstileToken } from "@/lib/turnstile";
 import type { LeadInput } from "@/lib/types";
 
 // De tool-loop + twee LLM-calls van de enrichment-agent kunnen langer duren dan Next's default
 // van 10s. Controleer bij het live zetten of je Vercel-plan maxDuration tot 60s toestaat.
 export const maxDuration = 60;
+
+function getClientIp(request: Request): string {
+  const forwardedFor = request.headers.get("x-forwarded-for");
+  if (forwardedFor) return forwardedFor.split(",")[0].trim();
+  return request.headers.get("x-real-ip") ?? "unknown";
+}
 
 function validate(body: Partial<LeadInput>): string | null {
   if (!body.name?.trim()) return "Vul je naam in.";
@@ -37,22 +44,49 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: validationError }, { status: 400 });
   }
 
-  // Rate-limit: dit endpoint is publiek en ongeauthenticeerd, en triggert (indirect) betaalde
-  // agent-calls. Simpele per-e-mail limiet als eerste drempel tegen spam/misbruik — geen vervanging
-  // voor een echte CAPTCHA, maar goedkoop en zonder extra infra. Zie ENRICHMENT_DAILY_CAP in
-  // lib/agents/enrichment-agent.ts voor de bijbehorende backstop op agent-niveau.
+  const ip = getClientIp(request);
+
+  // Laag 1: CAPTCHA — stopt scripted/bot-misbruik aan de bron, vóór er iets in de database komt.
+  const isHuman = await verifyTurnstileToken(body.turnstileToken ?? "", ip);
+  if (!isHuman) {
+    return NextResponse.json(
+      { error: "Verificatie mislukt. Herlaad de pagina en probeer het opnieuw." },
+      { status: 403 }
+    );
+  }
+
+  // Laag 2: rate-limits als backstop tegen wat de CAPTCHA toch doorlaat (bv. een menselijke
+  // spammer). Per e-mail én per IP, zodat het ene niet het andere kan omzeilen. Zie ook
+  // ENRICHMENT_DAILY_CAP in lib/agents/enrichment-agent.ts voor de backstop op agent-niveau.
   const oneDayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
-  const { count: recentCount } = await supabaseAdmin
+  const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString();
+
+  const { count: recentByEmail } = await supabaseAdmin
     .from("leads")
     .select("id", { count: "exact", head: true })
     .eq("email", (body.email as string).trim())
     .gte("created_at", oneDayAgo);
 
-  if ((recentCount ?? 0) >= 3) {
+  if ((recentByEmail ?? 0) >= 3) {
     return NextResponse.json(
       { error: "Je hebt al meerdere berichten gestuurd. We nemen zo snel mogelijk contact op." },
       { status: 429 }
     );
+  }
+
+  if (ip !== "unknown") {
+    const { count: recentByIp } = await supabaseAdmin
+      .from("leads")
+      .select("id", { count: "exact", head: true })
+      .eq("ip_address", ip)
+      .gte("created_at", oneHourAgo);
+
+    if ((recentByIp ?? 0) >= 5) {
+      return NextResponse.json(
+        { error: "Te veel berichten vanaf dit netwerk. Probeer het later opnieuw." },
+        { status: 429 }
+      );
+    }
   }
 
   const companyDomain = extractCompanyDomain(body.email as string) ?? "";
@@ -67,6 +101,7 @@ export async function POST(request: Request) {
       message: (body.message as string).trim(),
       source: "contact-form",
       status: "new",
+      ip_address: ip,
     })
     .select()
     .single();
