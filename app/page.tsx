@@ -104,6 +104,30 @@ export default async function HomePage() {
       </section>
 
       <section className="mx-auto grid max-w-5xl gap-10 border-t border-zinc-800 px-4 py-16 sm:grid-cols-2 sm:items-center">
+        <div className="flex flex-col gap-4">
+          <h2 className="text-3xl font-semibold text-zinc-50">{content.section_ai_heading}</h2>
+          <p className="text-zinc-400">{content.section_ai_text1}</p>
+          <p className="text-zinc-400">{content.section_ai_text2}</p>
+          <p className="font-medium text-zinc-200">{content.section_ai_highlight}</p>
+        </div>
+        <div className="flex flex-col gap-3 rounded-2xl border border-zinc-800 bg-zinc-900/60 p-8 transition-colors duration-300 hover:border-zinc-700">
+          {["Bewustzijn & beleid", "Pilot", "Agents & automatisering"].map((step, i) => (
+            <div key={step} className="group flex items-center gap-3">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-zinc-100 text-sm font-semibold text-zinc-950 transition-transform duration-300 group-hover:scale-110">
+                {i + 1}
+              </span>
+              <span className="text-lg font-medium text-zinc-100">{step}</span>
+              {i < 2 && (
+                <span aria-hidden className="ml-auto text-zinc-600 transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto grid max-w-5xl gap-10 border-t border-zinc-800 px-4 py-16 sm:grid-cols-2 sm:items-center">
         <div className="order-2 flex flex-col gap-4 sm:order-1">
           <h2 className="text-3xl font-semibold text-zinc-50">{content.section2_heading}</h2>
           <p className="text-zinc-400">{content.section2_text1}</p>

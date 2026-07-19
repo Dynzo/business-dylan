@@ -15,6 +15,13 @@ export const SITE_CONTENT_DEFAULTS = {
     "Je hoeft niet alles in één keer te kiezen: je stapt in waar je nu staat, en groeit stap voor stap mee.",
   section1_highlight: "Eén technische partner voor de hele weg — van eerste website tot eerste agent.",
 
+  section_ai_heading: "Nog niet gestart met AI, of alleen af en toe ChatGPT?",
+  section_ai_text1:
+    "Veel bedrijven weten nog niet precies wat AI kan, waar de kansen liggen, en welke risico's daarbij horen. Dat is een goed startpunt, geen achterstand.",
+  section_ai_text2:
+    "Van uitleg en bewustwording, via het opzetten van beleid en het meenemen van medewerkers, naar een eerste toepassing — en voor wie verder wil, agents die processen automatiseren.",
+  section_ai_highlight: "Ook dit gaat trede voor trede: jij bepaalt hoe ver je gaat.",
+
   section2_heading: "AI-toepassingen die je zelf kunt ervaren",
   section2_text1:
     "Deze site is zelf het bewijs: stuur een bericht via het contactformulier, en een research-agent zoekt automatisch openbare informatie op over je bedrijf — kwaliteit van de huidige website, tech-signalen, recent nieuws — en zet dat om in een concrete briefing.",

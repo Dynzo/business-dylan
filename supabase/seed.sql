@@ -5,7 +5,7 @@
 insert into pillars (key, name, tagline, description, order_index) values
   ('web', 'Web', 'Websites & webapplicaties', 'Online zichtbaar zijn of een werkende applicatie — de eerste cashflow en het portfolio.', 1),
   ('data', 'Data', 'Een solide dataplatform', 'Bronnen ontsluiten, opslag en pipelines, zodat analytics én applicaties erop kunnen draaien.', 2),
-  ('ai', 'AI', 'AI-toepassingen & agents', 'Van eerste AI-stappen tot agents, agentic workflows en procesautomatisering.', 3)
+  ('ai', 'AI', 'AI-toepassingen & agents', 'Van AI-bewustzijn en beleid, via een eerste toepassing, tot agents en procesautomatisering.', 3)
 on conflict (key) do nothing;
 
 with p as (select id from pillars where key = 'web')
@@ -54,10 +54,10 @@ with p as (select id from pillars where key = 'ai')
 insert into services (pillar_id, name, description, includes, price_label, order_index)
 select p.id, v.name, v.description, v.includes, v.price_label, v.order_index
 from p, (values
-  ('AI-startsessie',
-   'Voor bedrijven die nog niet begonnen zijn: waar liggen kansen, wat is haalbaar?',
-   array['Verkennend gesprek', 'Concrete kansen op een rij', 'Geen verplichtingen'],
-   'Vaste prijs — opener', 1),
+  ('AI-bewustzijn & beleid',
+   'Voor bedrijven die nog niet structureel met AI werken, of alleen incidenteel ChatGPT gebruiken: hoe werkt AI, waar liggen kansen én risico''s, en hoe richt je dat verantwoord in.',
+   array['Uitleg over wat AI kan (en niet kan)', 'Kansen én risico''s in kaart', 'Medewerkers meenemen of trainen', 'AI-beleid en richtlijnen opzetten'],
+   'Workshop of traject — op aanvraag', 1),
   ('AI-pilot',
    'Een concrete, afgebakende eerste toepassing.',
    array['Eén afgebakend use case', 'Werkend resultaat, geen concept'],

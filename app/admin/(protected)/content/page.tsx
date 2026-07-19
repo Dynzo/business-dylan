@@ -113,6 +113,26 @@ export default async function AdminContentPage() {
           defaultValue={content.section1_highlight}
         />
         <TextField
+          name="section_ai_heading"
+          label="Sectie AI-instap — titel"
+          defaultValue={content.section_ai_heading}
+        />
+        <TextAreaField
+          name="section_ai_text1"
+          label="Sectie AI-instap — tekst 1"
+          defaultValue={content.section_ai_text1}
+        />
+        <TextAreaField
+          name="section_ai_text2"
+          label="Sectie AI-instap — tekst 2"
+          defaultValue={content.section_ai_text2}
+        />
+        <TextField
+          name="section_ai_highlight"
+          label="Sectie AI-instap — uitgelichte zin"
+          defaultValue={content.section_ai_highlight}
+        />
+        <TextField
           name="section2_heading"
           label="Sectie 2 — titel"
           defaultValue={content.section2_heading}

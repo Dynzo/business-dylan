@@ -50,7 +50,7 @@ export default async function DienstenPage() {
         <div className="relative z-10 mx-auto max-w-5xl px-4 pt-16">
           <h1 className="animate-fade-up text-4xl font-semibold text-zinc-50">Diensten</h1>
           <p className="animate-fade-up mt-2 max-w-2xl text-zinc-400 [animation-delay:100ms]">
-            Web → Data → AI: je stapt in op elk niveau en groeit met me mee, trede voor trede.
+            Web → Data → AI: je stapt in op elk niveau en groeit stap voor stap mee.
           </p>
         </div>
       </section>
