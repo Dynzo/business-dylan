@@ -47,7 +47,7 @@ export default async function DienstenPage() {
     <main className="flex flex-1 flex-col">
       <section className="relative overflow-hidden">
         <AmbientBackground />
-        <div className="relative z-10 mx-auto max-w-5xl px-4 pt-16">
+        <div className="relative z-10 mx-auto max-w-5xl px-4 py-16 sm:py-20">
           <h1 className="animate-fade-up text-4xl font-semibold text-zinc-50">Diensten</h1>
           <p className="animate-fade-up mt-2 max-w-2xl text-zinc-400 [animation-delay:100ms]">
             Web → Data → AI: je stapt in op elk niveau en groeit stap voor stap mee.

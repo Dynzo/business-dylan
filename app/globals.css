@@ -81,6 +81,13 @@ body {
   mask-image: radial-gradient(ellipse 65% 55% at 50% 0%, black 35%, transparent 100%);
 }
 
+/* Laat de hele ambient-compositie (orbs + grid) altijd vloeiend wegvallen naar de achtergrond,
+   ongeacht hoe hoog de sectie is — voorkomt een harde rand op kortere hero's. */
+.ambient-fade {
+  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+}
+
 .btn-shine {
   position: relative;
   overflow: hidden;
