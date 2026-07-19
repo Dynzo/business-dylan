@@ -111,11 +111,12 @@ export default async function HomePage() {
         </div>
         <div className="order-1 rounded-2xl border border-zinc-800 bg-zinc-900/60 p-8 transition-colors duration-300 hover:border-zinc-700 sm:order-2">
           <p className="text-sm font-semibold uppercase tracking-wide text-zinc-400">
-            Aan het werk zien
+            Voorbereid het gesprek in
           </p>
           <p className="mt-2 text-zinc-300">
-            Stuur een bericht via het contactformulier met je bedrijfsnaam — en zie zelf wat de
-            research-agent ervan maakt.
+            Stuur een bericht via het contactformulier met je bedrijfsnaam — de research-agent
+            gaat alvast aan de slag, en wat daaruit komt bespreken we samen in het gesprek dat
+            volgt.
           </p>
         </div>
       </section>

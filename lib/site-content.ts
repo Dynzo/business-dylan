@@ -4,27 +4,27 @@ import { supabase } from "@/lib/supabase";
 // Beheerbaar via /admin/content. Werknaam totdat er een merknaam gekozen is (zie businessplan).
 export const SITE_CONTENT_DEFAULTS = {
   hero_title: "Dylan Hemme — Web · Data · AI",
-  hero_tagline: "Eén technische partner die met je meegroeit.",
+  hero_tagline: "Groeit met je mee.",
   hero_text:
-    "Van websites en webapplicaties, via een solide dataplatform als fundament, tot AI-toepassingen en agents die processen automatiseren. Je stapt in op elk niveau en groeit met me mee.",
+    "Van websites en webapplicaties, via een solide dataplatform als fundament, tot AI-toepassingen en agents die processen automatiseren. Je stapt in op elk niveau en groeit mee, trede voor trede.",
 
   section1_heading: "Web → Data → AI",
   section1_text1:
     "Een goede website of applicatie brengt data voort. Die data breng je samen in een platform. Op dat platform draaien analytics en applicaties. En daar bovenop komen AI-toepassingen en agents.",
   section1_text2:
-    "Je hoeft niet alles in één keer te kiezen: je stapt in waar je nu staat, en groeit met me mee, trede voor trede.",
+    "Je hoeft niet alles in één keer te kiezen: je stapt in waar je nu staat, en groeit stap voor stap mee.",
   section1_highlight: "Eén technische partner voor de hele weg — van eerste website tot eerste agent.",
 
-  section2_heading: "Wat ik voor mezelf bouwde, bouw ik ook voor jullie",
+  section2_heading: "AI-toepassingen die je zelf kunt ervaren",
   section2_text1:
     "Deze site is zelf het bewijs: stuur een bericht via het contactformulier, en een research-agent zoekt automatisch openbare informatie op over je bedrijf — kwaliteit van de huidige website, tech-signalen, recent nieuws — en zet dat om in een concrete briefing.",
   section2_text2:
     "Geen black box: alleen bedrijfsniveau, alleen openbare bronnen, en altijd een mens die meekijkt voordat er iets de deur uit gaat.",
 
-  philosophy_quote: "Technisch sterk, persoonlijk, en in staat om het simpel uit te leggen.",
+  philosophy_quote: "Sterke techniek, heldere taal, geen jargon.",
 
   cta_heading: "Laten we kennismaken",
-  cta_text: "Vertel kort waar je tegenaan loopt — ik denk vrijblijvend met je mee.",
+  cta_text: "Vertel kort waar je tegenaan loopt — we denken vrijblijvend met je mee.",
 
   email_lead_confirmation_subject: "We hebben je bericht ontvangen",
   email_lead_confirmation_intro:
