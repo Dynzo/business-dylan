@@ -103,27 +103,28 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-5xl gap-10 border-t border-zinc-800 px-4 py-16 sm:grid-cols-2 sm:items-center">
-        <div className="flex flex-col gap-4">
-          <h2 className="text-3xl font-semibold text-zinc-50">{content.section_ai_heading}</h2>
-          <p className="text-zinc-400">{content.section_ai_text1}</p>
-          <p className="text-zinc-400">{content.section_ai_text2}</p>
-          <p className="font-medium text-zinc-200">{content.section_ai_highlight}</p>
+      <section className="mx-auto max-w-5xl border-t border-zinc-800 px-4 py-16">
+        <div className="max-w-2xl">
+          <h2 className="text-3xl font-semibold text-zinc-50">{content.section_growth_heading}</h2>
+          <p className="mt-2 text-zinc-400">{content.section_growth_intro}</p>
         </div>
-        <div className="flex flex-col gap-3 rounded-2xl border border-zinc-800 bg-zinc-900/60 p-8 transition-colors duration-300 hover:border-zinc-700">
-          {["Bewustzijn & beleid", "Pilot", "Agents & automatisering"].map((step, i) => (
-            <div key={step} className="group flex items-center gap-3">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-zinc-100 text-sm font-semibold text-zinc-950 transition-transform duration-300 group-hover:scale-110">
-                {i + 1}
-              </span>
-              <span className="text-lg font-medium text-zinc-100">{step}</span>
-              {i < 2 && (
-                <span aria-hidden className="ml-auto text-zinc-600 transition-transform duration-300 group-hover:translate-x-1">
-                  →
-                </span>
-              )}
-            </div>
-          ))}
+        <div className="mt-8 grid gap-6 sm:grid-cols-2">
+          <div className="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-6 transition-colors duration-300 hover:border-zinc-700">
+            <h3 className="text-lg font-semibold text-zinc-100">Data</h3>
+            <p className="mt-2 text-sm text-zinc-400">{content.section_data_text}</p>
+            <p className="mt-4 text-sm font-medium text-zinc-300">
+              Dataquickscan <span className="text-zinc-600">→</span> Dataplatform{" "}
+              <span className="text-zinc-600">→</span> Analytics &amp; dashboards
+            </p>
+          </div>
+          <div className="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-6 transition-colors duration-300 hover:border-zinc-700">
+            <h3 className="text-lg font-semibold text-zinc-100">AI</h3>
+            <p className="mt-2 text-sm text-zinc-400">{content.section_ai_text}</p>
+            <p className="mt-4 text-sm font-medium text-zinc-300">
+              Bewustzijn &amp; beleid <span className="text-zinc-600">→</span> Pilot{" "}
+              <span className="text-zinc-600">→</span> Agents &amp; automatisering
+            </p>
+          </div>
         </div>
       </section>
 
