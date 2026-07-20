@@ -30,6 +30,27 @@ const AI_FAQ = [
   },
 ];
 
+// Voor de website-starter die twijfelt over een grotere uitgave: laat zien wat een traject
+// inhoudt, zodat er geen onduidelijkheid is over wat er wanneer gebeurt.
+const WEB_PROCESS = [
+  {
+    step: "Kennismaking",
+    text: "Kort gesprek over wat je nodig hebt — vrijblijvend, geen verplichtingen.",
+  },
+  {
+    step: "Voorstel & planning",
+    text: "Een concreet voorstel met scope en planning, pas daarna een go/no-go.",
+  },
+  {
+    step: "Bouw",
+    text: "De site of applicatie wordt gebouwd, met tussentijdse check-ins onderweg.",
+  },
+  {
+    step: "Livegang & overdracht",
+    text: "De site gaat live, met duidelijke afspraken over onderhoud en aanpassingen.",
+  },
+];
+
 async function getPillarsWithServices(): Promise<{ pillar: Pillar; services: Service[] }[]> {
   if (!supabase) return [];
 
@@ -105,6 +126,27 @@ export default async function DienstenPage() {
               </div>
             ) : (
               <p className="mt-6 text-sm text-zinc-500">Nog geen diensten voor deze pijler.</p>
+            )}
+
+            {pillar.key === "web" && (
+              <div className="mt-8">
+                <h3 className="text-sm font-semibold uppercase tracking-wide text-zinc-400">
+                  Zo werkt een traject
+                </h3>
+                <div className="mt-4 grid gap-6 sm:grid-cols-4">
+                  {WEB_PROCESS.map((item, i) => (
+                    <div key={item.step} className="flex flex-col gap-2">
+                      <div className="flex items-center gap-2">
+                        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-zinc-100 text-xs font-semibold text-zinc-950">
+                          {i + 1}
+                        </span>
+                        <span className="text-sm font-medium text-zinc-100">{item.step}</span>
+                      </div>
+                      <p className="text-sm text-zinc-400">{item.text}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             )}
 
             {pillar.key === "ai" && (
