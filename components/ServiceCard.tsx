@@ -18,10 +18,9 @@ export function ServiceCard({ service }: { service: Service }) {
           ))}
         </ul>
       )}
-      <p className="mt-2 text-sm font-medium text-zinc-200">{service.price_label}</p>
       <Link
         href="/contact"
-        className="mt-1 self-start rounded-full border border-zinc-700 px-4 py-2 text-sm font-semibold text-zinc-100 transition-all duration-300 hover:-translate-y-0.5 hover:border-zinc-500 hover:bg-zinc-800"
+        className="mt-2 self-start rounded-full border border-zinc-700 px-4 py-2 text-sm font-semibold text-zinc-100 transition-all duration-300 hover:-translate-y-0.5 hover:border-zinc-500 hover:bg-zinc-800"
       >
         {service.cta_label}
       </Link>
