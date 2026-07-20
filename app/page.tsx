@@ -152,12 +152,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-3xl border-t border-zinc-800 px-4 py-12 text-center">
-        <p className="text-2xl font-medium leading-snug text-zinc-100 sm:text-3xl">
-          {content.philosophy_quote}
-        </p>
-      </section>
-
       <section className="relative overflow-hidden border-t border-zinc-800 bg-zinc-950 py-20">
         <AmbientBackground />
         <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center gap-4 px-4 text-center">
