@@ -11,6 +11,9 @@ export async function Footer() {
         <p className="text-sm text-zinc-500">{content.hero_tagline}</p>
 
         <div className="mt-4 flex gap-4 text-xs text-zinc-500">
+          <Link href="/agents" className="underline hover:text-zinc-200">
+            Agents in actie
+          </Link>
           <Link href="/privacybeleid" className="underline hover:text-zinc-200">
             Privacyverklaring
           </Link>

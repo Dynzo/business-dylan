@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { AmbientBackground } from "@/components/AmbientBackground";
 import { ServiceCard } from "@/components/ServiceCard";
 import { supabase } from "@/lib/supabase";
@@ -151,7 +152,13 @@ export default async function DienstenPage() {
 
             {pillar.key === "ai" && (
               <div className="mt-8 flex flex-col gap-3">
-                <h3 className="text-sm font-semibold uppercase tracking-wide text-zinc-400">
+                <Link
+                  href="/agents"
+                  className="inline-flex items-center gap-1 self-start text-sm font-medium text-zinc-300 transition-all hover:gap-2 hover:text-zinc-100"
+                >
+                  Bekijk hoe een agent er in de praktijk uitziet <span aria-hidden>→</span>
+                </Link>
+                <h3 className="mt-4 text-sm font-semibold uppercase tracking-wide text-zinc-400">
                   Veelgestelde vragen
                 </h3>
                 {AI_FAQ.map((item) => (

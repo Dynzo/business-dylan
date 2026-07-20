@@ -5,7 +5,7 @@ import { isSupabaseAdminConfigured } from "@/lib/supabase-admin";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Vertel kort waar je tegenaan loopt — ik denk vrijblijvend met je mee.",
+  description: "Vertel kort waar je tegenaan loopt — we denken vrijblijvend met je mee.",
 };
 
 export default function ContactPage() {
@@ -16,7 +16,7 @@ export default function ContactPage() {
         <div className="relative z-10 mx-auto max-w-2xl px-4 pt-16">
           <h1 className="animate-fade-up text-4xl font-semibold text-zinc-50">Neem contact op</h1>
           <p className="animate-fade-up mt-2 text-zinc-400 [animation-delay:100ms]">
-            Vertel kort waar je tegenaan loopt. Ik reageer binnen 1-2 werkdagen.
+            Vertel kort waar je tegenaan loopt. Je krijgt binnen 1-2 werkdagen reactie.
           </p>
         </div>
       </section>

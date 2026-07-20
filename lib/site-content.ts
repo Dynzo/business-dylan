@@ -36,7 +36,7 @@ export const SITE_CONTENT_DEFAULTS = {
 
   email_lead_confirmation_subject: "We hebben je bericht ontvangen",
   email_lead_confirmation_intro:
-    "Bedankt voor je bericht. Ik neem binnen 1-2 werkdagen contact met je op.",
+    "Bedankt voor je bericht. Je krijgt binnen 1-2 werkdagen reactie.",
 
   privacy_policy_body: `[Eenmanszaak, naam en KVK-nummer volgen zodra ingeschreven], gevestigd op [adres volgt], is verantwoordelijk voor de verwerking van persoonsgegevens zoals beschreven in deze privacyverklaring.
 

@@ -143,6 +143,12 @@ export default async function HomePage() {
             gaat alvast aan de slag, en wat daaruit komt bespreken we samen in het gesprek dat
             volgt.
           </p>
+          <Link
+            href="/agents"
+            className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-zinc-300 transition-all hover:gap-2 hover:text-zinc-100"
+          >
+            Bekijk hoe de agent werkt <span aria-hidden>→</span>
+          </Link>
         </div>
       </section>
 
