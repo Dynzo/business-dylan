@@ -3,7 +3,7 @@
 -- /admin/diensten of rechtstreeks in Supabase zodra je tarieven definitief zijn.
 
 insert into pillars (key, name, tagline, description, order_index) values
-  ('web', 'Web', 'Websites & webapplicaties', 'Online zichtbaar zijn of een werkende applicatie — de eerste stap richting data en AI.', 1),
+  ('web', 'Web', 'Websites & webapplicaties', 'Online zichtbaar zijn of een werkende applicatie — snel, overzichtelijk en zonder gedoe.', 1),
   ('data', 'Data', 'Een solide dataplatform', 'Bronnen ontsluiten, opslag en pipelines, zodat analytics én applicaties erop kunnen draaien.', 2),
   ('ai', 'AI', 'AI-toepassingen & agents', 'Van AI-bewustzijn en beleid, via een eerste toepassing, tot agents en procesautomatisering.', 3)
 on conflict (key) do nothing;
