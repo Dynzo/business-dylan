@@ -9,6 +9,27 @@ export const metadata: Metadata = {
   description: "Web, Data en AI — drie pijlers, één technische partner die met je meegroeit.",
 };
 
+// Weerlegt de twijfels die de AI-onzekere doelgroep heeft vóór het eerste contact — vandaar hier,
+// vlak bij de "AI-bewustzijn & beleid"-dienst, in plaats van los op de homepage.
+const AI_FAQ = [
+  {
+    q: "Is het onderzoek naar mijn bedrijf via het contactformulier AVG-proof?",
+    a: "Als je zelf via het contactformulier reageert, kijkt een agent naar openbare, bedrijfsniveau-informatie: de kwaliteit van je website, technische signalen en publiek nieuws — nooit naar jou als persoon. Er wordt geen persoonlijk profiel opgebouwd, en de uitkomst wordt altijd eerst door een mens beoordeeld voordat er iets naar je gemaild wordt. De volledige verwerking staat beschreven in de privacyverklaring.",
+  },
+  {
+    q: "Wat als medewerkers AI verkeerd gebruiken?",
+    a: "Daar is het beleidstraject voor bedoeld: concrete afspraken over welke tools gebruikt mogen worden, welke gegevens wel en niet in een prompt mogen, en wie er verantwoordelijk is als het misgaat. Medewerkers krijgen uitleg zodat ze risico's zelf herkennen, in plaats van dat er alleen een document bijkomt dat niemand leest.",
+  },
+  {
+    q: "Moeten we meteen agents of automatisering inzetten?",
+    a: "Nee — bewustzijn en beleid staan op zichzelf en zijn voor veel bedrijven het enige dat nodig is. Een pilot of agents komt pas aan de orde als er een concrete, afgebakende taak is die zich daarvoor leent; dat bepalen we samen, niet vooraf.",
+  },
+  {
+    q: "Wat kost dit?",
+    a: "Dat hangt af van de vorm: een losse workshop kost minder dan een uitgebreid beleidstraject met meerdere sessies. Er komt altijd eerst een vrijblijvend gesprek waarin duidelijk wordt wat er nodig is, en pas daarna een concreet voorstel — geen verrassingen achteraf.",
+  },
+];
+
 async function getPillarsWithServices(): Promise<{ pillar: Pillar; services: Service[] }[]> {
   if (!supabase) return [];
 
@@ -84,6 +105,31 @@ export default async function DienstenPage() {
               </div>
             ) : (
               <p className="mt-6 text-sm text-zinc-500">Nog geen diensten voor deze pijler.</p>
+            )}
+
+            {pillar.key === "ai" && (
+              <div className="mt-8 flex flex-col gap-3">
+                <h3 className="text-sm font-semibold uppercase tracking-wide text-zinc-400">
+                  Veelgestelde vragen
+                </h3>
+                {AI_FAQ.map((item) => (
+                  <details
+                    key={item.q}
+                    className="group rounded-xl border border-zinc-800 bg-zinc-900/60 p-4 open:bg-zinc-900"
+                  >
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-2 text-sm font-medium text-zinc-100 marker:content-none">
+                      {item.q}
+                      <span
+                        aria-hidden
+                        className="shrink-0 text-zinc-500 transition-transform duration-200 group-open:rotate-45"
+                      >
+                        +
+                      </span>
+                    </summary>
+                    <p className="mt-2 text-sm text-zinc-400">{item.a}</p>
+                  </details>
+                ))}
+              </div>
             )}
           </section>
         ))}
