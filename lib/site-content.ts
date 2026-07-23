@@ -3,7 +3,7 @@ import { supabase } from "@/lib/supabase";
 // Standaardwaarden — worden gebruikt zolang er geen rij in site_content bestaat voor die key.
 // Beheerbaar via /admin/content. Werknaam totdat er een merknaam gekozen is (zie businessplan).
 export const SITE_CONTENT_DEFAULTS = {
-  hero_title: "Wingcrest — Web · Data · AI",
+  hero_title: "Wingcrest",
   hero_tagline: "Groeit met je mee.",
   hero_text:
     "Van websites en webapplicaties, via een solide dataplatform als fundament, tot AI-toepassingen en agents die processen automatiseren. Je stapt in op elk niveau en groeit mee, trede voor trede.",
