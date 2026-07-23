@@ -21,13 +21,13 @@ const siteUrl =
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Dylan Hemme — Web · Data · AI",
-    template: "%s | Dylan Hemme",
+    default: "Wingcrest — Web · Data · AI",
+    template: "%s | Wingcrest",
   },
   description:
     "Eén technische partner die met je meegroeit: van websites en webapplicaties, via een solide dataplatform, tot AI-toepassingen en agents.",
   openGraph: {
-    siteName: "Dylan Hemme — Web · Data · AI",
+    siteName: "Wingcrest — Web · Data · AI",
     locale: "nl_NL",
     type: "website",
   },

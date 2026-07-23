@@ -5,7 +5,7 @@ export function Nav() {
     <header className="sticky top-0 z-20 border-b border-zinc-800 bg-zinc-950/80 backdrop-blur">
       <nav className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-4">
         <Link href="/" className="font-semibold text-zinc-100 transition-colors hover:text-white">
-          Dylan Hemme
+          Wingcrest
         </Link>
         <div className="flex items-center gap-3 text-sm font-medium text-zinc-400 sm:gap-6">
           <Link
