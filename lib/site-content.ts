@@ -41,10 +41,10 @@ export const SITE_CONTENT_DEFAULTS = {
   privacy_policy_body: `[Eenmanszaak, naam en KVK-nummer volgen zodra ingeschreven], gevestigd op [adres volgt], is verantwoordelijk voor de verwerking van persoonsgegevens zoals beschreven in deze privacyverklaring.
 
 ## Contactgegevens
-[Bedrijfsnaam volgt]
+Dygital
 [Adres volgt]
 KVK-nummer: volgt binnenkort
-E-mail: contactgegevens volgen binnenkort
+E-mail: info@dygital.nl
 
 ## Welke persoonsgegevens verwerken wij
 Bij het versturen van een bericht via het contactformulier verwerken wij:
