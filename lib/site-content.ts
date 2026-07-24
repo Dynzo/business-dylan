@@ -6,7 +6,7 @@ export const SITE_CONTENT_DEFAULTS = {
   hero_title: "DYGITAL.",
   hero_tagline: "Groeit met je mee.",
   hero_text:
-    "Van websites en webapplicaties, via een solide dataplatform als fundament, tot AI-toepassingen en agents die processen automatiseren. Je stapt in op elk niveau en groeit mee, trede voor trede.",
+    "Van websites en webapplicaties, via een solide dataplatform als fundament, tot AI-toepassingen en agents die processen automatiseren. Je stapt in waar je nu staat, en groeit mee, trede voor trede.",
 
   section1_heading: "Web → Data → AI",
   section1_text1:
