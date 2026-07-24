@@ -29,14 +29,14 @@ export default async function HomePage() {
       <section className="relative overflow-hidden">
         <AmbientBackground />
         <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center gap-5 px-4 py-20 text-center sm:py-28">
-          <h1 className="animate-fade-up bg-gradient-to-r from-zinc-100 via-zinc-50 to-indigo-200 bg-clip-text text-5xl font-bold leading-tight text-transparent sm:text-6xl">
+          <h1 className="animate-fade-up bg-gradient-to-r from-zinc-100 via-zinc-50 to-orange-200 bg-clip-text text-5xl font-bold leading-tight text-transparent sm:text-6xl">
             {content.hero_title}
           </h1>
-          <div className="animate-fade-up flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.25em] text-indigo-300/80 [animation-delay:80ms] sm:text-sm">
+          <div className="animate-fade-up flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.25em] text-orange-300/80 [animation-delay:80ms] sm:text-sm">
             {(pillars.length > 0 ? pillars.map((p) => p.name) : ["Web", "Data", "AI"]).map(
               (name, i) => (
                 <span key={name} className="flex items-center gap-2.5">
-                  {i > 0 && <span aria-hidden className="h-1 w-1 rounded-full bg-indigo-400/70" />}
+                  {i > 0 && <span aria-hidden className="h-1 w-1 rounded-full bg-orange-400/70" />}
                   {name}
                 </span>
               ),
@@ -72,7 +72,7 @@ export default async function HomePage() {
               <Link
                 key={pillar.id}
                 href={`/diensten#${pillar.key}`}
-                className="group flex flex-col gap-2 rounded-2xl border border-zinc-800 bg-zinc-900/60 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-zinc-600 hover:bg-zinc-900 hover:shadow-[0_0_40px_-10px_rgba(99,102,241,0.35)]"
+                className="group flex flex-col gap-2 rounded-2xl border border-zinc-800 bg-zinc-900/60 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-zinc-600 hover:bg-zinc-900 hover:shadow-[0_0_40px_-10px_rgba(249,115,22,0.35)]"
                 style={{ animationDelay: `${i * 100}ms` }}
               >
                 <h2 className="text-xl font-semibold text-zinc-50 transition-colors group-hover:text-white">

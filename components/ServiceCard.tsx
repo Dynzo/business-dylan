@@ -3,7 +3,7 @@ import type { Service } from "@/lib/types";
 
 export function ServiceCard({ service }: { service: Service }) {
   return (
-    <div className="group flex flex-col gap-3 rounded-2xl border border-zinc-800 bg-zinc-900/60 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-zinc-600 hover:bg-zinc-900 hover:shadow-[0_0_40px_-10px_rgba(99,102,241,0.35)]">
+    <div className="group flex flex-col gap-3 rounded-2xl border border-zinc-800 bg-zinc-900/60 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-zinc-600 hover:bg-zinc-900 hover:shadow-[0_0_40px_-10px_rgba(249,115,22,0.35)]">
       <h3 className="text-lg font-semibold text-zinc-50 transition-colors group-hover:text-white">
         {service.name}
       </h3>
